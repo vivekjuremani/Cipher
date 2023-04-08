@@ -16,8 +16,9 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 if (process.env.NODE_ENV !== 'production') {
   app.use(morgan('dev'));
 }
-app.use(express.static(path.resolve(__dirname, './frontend/build')));
 app.use(express.json());
+
+app.use(express.static(path.resolve(__dirname, './frontend/build')));
 app.use('/api/v1/auth', authRouter);
 app.use(notFound);
 app.use(errorHandler);
