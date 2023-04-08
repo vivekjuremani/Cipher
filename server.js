@@ -23,13 +23,13 @@ app.use(express.json());
 app.use(helmet());
 app.use(xss());
 app.use(mongoSanitize());
-app.use(express.static(path.join(__dirname, './frontend/build')));
+app.use(express.static(path.join(__dirname, "./frontend/build")));
 app.use('/api/v1/auth', authRouter);
 app.use(notFound);
 app.use(errorHandler);
 
 app.get('*', (req, res) => {
-  res.send(express.static(path.join(__dirname, './frontend/build/index.html')));
+  res.send(express.static(path.join(__dirname, "./frontend/build/index.html")));
 });
 const start = async () => {
   try {
