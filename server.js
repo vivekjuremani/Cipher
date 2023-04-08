@@ -16,14 +16,14 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 if (process.env.NODE_ENV !== 'production') {
   app.use(morgan('dev'));
 }
-app.use(express.static(path.resolve(__dirname, './cipher/build')));
+app.use(express.static(path.resolve(__dirname, './frontend/build')));
 app.use(express.json());
 app.use('/api/v1/auth', authRouter);
 app.use(notFound);
 app.use(errorHandler);
 
 app.get('*', (req, res) => {
-  res.send(express.static(path.join(__dirname, './cipher/build/index.html')));
+  res.send(express.static(path.join(__dirname, './frontend/build/index.html')));
 });
 const start = async () => {
   try {
